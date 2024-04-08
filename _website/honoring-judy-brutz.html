@@ -1,0 +1,249 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+
+<head>
+    <!-- thank you mdBook for open source style this was based on -->
+    <meta charset="UTF-8">
+    <title>Honoring Judy Brutz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="/theme/css/variables.css">
+    <link rel="stylesheet" href="/theme/css/general.css">
+    <link rel="stylesheet" href="/theme/css/chrome.css">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="/theme/FontAwesome/css/font-awesome.min.css">
+
+    <!-- Highlight.js Stylesheets -->
+    <link rel="stylesheet" href="/theme/highlight.css">
+    <link rel="stylesheet" href="/theme/tomorrow-night.css">
+    <link rel="stylesheet" href="/theme/ayu-highlight.css">
+
+</head>
+
+<body class="sidebar-visible no-js">
+    <div id="body-container">
+<!-- init global vars, load settings from local storage -->
+<script>
+   // Provide site root to javascript
+    var path_to_root = "/";
+    var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "" : "light";
+
+    // Work around some values being stored in localStorage wrapped in quotes
+    try {
+        var theme = localStorage.getItem('mdbook-theme');
+        var sidebar = localStorage.getItem('mdbook-sidebar');
+
+        if (theme.startsWith('"') && theme.endsWith('"')) {
+            localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+        }
+
+        if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+            localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+        }
+    } catch (e) { }
+
+    // Set the theme before any content is loaded, prevents flash
+    var theme;
+    try {theme = localStorage.getItem('mdbook-theme'); } catch (e) { }
+    if (theme === null || theme === undefined) {theme = default_theme; }
+    var html = document.querySelector('html');
+    html.classList.remove('light')
+    html.classList.add(theme);
+    var body = document.querySelector('body');
+    body.classList.remove('no-js')
+    body.classList.add('js');
+
+</script>
+<input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+<!-- Hide / unhide sidebar before it is displayed -->
+<script>
+    var body = document.querySelector('body');
+    var sidebar = null;
+    var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+    if (document.body.clientWidth >= 1080) {
+        try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch (e) { }
+        sidebar = sidebar || 'visible';
+    } else {
+        sidebar = 'hidden';
+    }
+    try {
+        var sidebar_width = localStorage.getItem('mdbook-sidebar-width');
+        if (typeof sidebar_width !== 'undefined' && sidebar_width !== 'null') {
+            document.documentElement.style.setProperty('--sidebar-width', sidebar_width + 'px');
+        }
+    } catch (e) { }
+    sidebar_toggle.checked = sidebar === 'visible';
+    body.classList.remove('sidebar-visible');
+    body.classList.add("sidebar-" + sidebar);
+</script>
+
+
+<nav id="sidebar" class="sidebar" aria-label="Table of contents">
+    <div class="sidebar-scrollbox">
+                            <script>
+                document.addEventListener("DOMContentLoaded", function (event) {
+                    let current_path = location.href.replace(location.origin, '');
+                    if (current_path == "/") {
+                        current_path = "/index.html";
+                    }
+                    let elem = document.querySelector('li.chapter-item > a[href="' + current_path + '"]');
+                    elem.classList.add("active");
+                })
+            </script>
+            
+            <ol class="chapter">
+                <li class="chapter-item expanded affix "><a href="/index.html">
+                    <strong>&#x2B29; </strong>Home</a></li>
+                <li class="chapter-item expanded affix "><a href="/honoring-judy-brutz.html">
+                    <strong>&#x2B29; </strong>Honoring Judy Brutz</a></li>
+                <li class="chapter-item expanded affix ">
+                <li class="part-title">FJ Oct 1984</li>
+                <li class="chapter-item expanded "><a href="/friends-journal-oct-1984/trouble.html">
+                        <strong>&#x2B29; </strong>Trouble in the Family</a></li>
+                <li class="chapter-item expanded "><a href="/friends-journal-oct-1984/precious-testimony.html">
+                        <strong>&#x2B29; </strong>How Precious Is Our Testimony?</a></li>
+                <li class="part-title">Misc</li>
+                <li class="chapter-item expanded affix "><a href="/windy-cooler-scym-conversation.html">
+                        <strong>&#x2B29; </strong>Windy Cooler, SCYM interview</a>
+                </li>
+                <li class="chapter-item expanded affix "><a href="/2019-gulizia-walking.html">
+                        <strong>&#x2B29; </strong>Walking the Path of the Perpetrator</a>
+                </li>
+            
+            
+            </ol>    </div>
+    <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+        <div class="sidebar-resize-indicator"></div>
+    </div>
+</nav>
+
+<!-- Track and set sidebar scroll position -->
+<script>
+    var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+    sidebarScrollbox.addEventListener('click', function (e) {
+        if (e.target.tagName === 'A') {
+            sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+        }
+    }, { passive: true });
+    var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+    sessionStorage.removeItem('sidebar-scroll');
+    if (sidebarScrollTop) {
+        // preserve sidebar scroll position when navigating via links within sidebar
+        sidebarScrollbox.scrollTop = sidebarScrollTop;
+    } else {
+        // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+        var activeSection = document.querySelector('#sidebar .active');
+        if (activeSection) {
+            activeSection.scrollIntoView({ block: 'center' });
+        }
+    }
+</script>
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor"
+                            title="Toggle Table of Contents" aria-label="Toggle Table of Contents"
+                            aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme"
+                            aria-label="Change theme" aria-haspopup="true" aria-expanded="false"
+                            aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function (link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <audio controls><source src="/media/honoring-judy-brutz.mp3" type="audio/mpeg">Your browser does not support the audio element. <a href="/media/honoring-judy-brutz.mp3" title="honoring-judy-brutz.mp3" class="audio"><span class="fa-solid fa-play">honoring-judy-brutz.mp3</span></a></audio><h1>Honoring an Elder in Our Work Against Interpersonal Violence:</h1>
+<h1>A Friend’s Recollection of Judy Brutz</h1>
+<p><em>Dec 13</em></p>
+<p>In February of 1984 Friend Judy Brutz, then a student at Iowa State University, wrote and published in The Journal of Marriage and Family a study of liberal Quakers and family violence. She was expecting to find that, because of our peace testimony, and our public commitment to pacifism, we would experience less domestic violence than the general population. What she found shook her to her core. We are on par with everyone else in the United States in terms of violence in the home. We have at least as high a rate of domestic violence as every other population.</p>
+<p>She spent the next several years traveling the country, speaking against domestic violence and raising awareness of it in our lives. Friends responded unevenly. Some of us embraced the results of the study and others of us were openly hostile to it and to Judy personally. Judy, self-described as shy, and maybe like many Quaker heroes, driven by a sense of purpose she didn’t always enjoy, wrote, spoke and sometimes receded to the background. It was overwhelming to be told so many stories about dramatic acts of abuse and violence that had been silenced, to be welcomed, and to be rejected.</p>
+<p>Judy passed away, surrounded by her family, on December 1, 2023.  Her obituary can be <a href="https://www.wilksfuneralhome.com/obituaries/Judith--Lynne-Brutz?fbclid=IwAR1cdzulxmBdPDKNDYvCCNMju7BOGRaa-WaCndFLS0N4zq7Hhlyj2PCsJ_o&amp;obId=30027917#/obituaryInfo">read here</a>.</p>
+<p>The following are the recollections of Judy’s impact by Joan Liversidge, an elder to Life and Power convener Windy Cooler at Sandy Spring Monthly Meeting (Baltimore Yearly). Joan asks important queries at the end of her memory about to what degree we are ready to labor with the presence of violence in our lives.</p>
+<blockquote>
+<p>I first met Judy while doing research for my Master’s degree in Family and Community Development at the University of Maryland. I was focused on a clinical track in Marriage and Family Therapy. I was not a Quaker at that time but curious about Friends. When I saw the article based on her research among Friends on the occurrence of domestic violence in Quaker families as compared to the national occurrences, I was immediately interested.</p>
+<p>The last semester of my undergraduate work was spent as an intern in the Congressional Clearinghouse on Women’s Rights. My assignment was to research and write articles for our newsletters that were delivered to every Congress person and their staff. That was 1977, the year that Jimmy Carter came to Washington as President. It wasn’t until 1994, under the Clinton presidency, that the Violence Against Women Act was passed in Congress. Changing cultural norms and attitudes often takes a very long time.</p>
+<p>In 1981 I started attending Quaker meeting in Washington, DC (Friends Meeting of Washington) and became a member in 1984. That was the period when Judy Brutz and other Friends formed Friends Family Service to address the occurrence of violence among Friends. It was a difficult slog. The taboo about talking about this subject, especially among Friends who see themselves as non-violent, was strong. I remember being at Friends General Conference (forget the year) when Judy was a plenary speaker. It was the first time I heard testimony about being called by God for service and being filled with fear and trepidation. I was mesmerized. Judy talked about how her leading came to her, how she couldn’t turn away from it, and how difficult it was. She had an active prayer and worship life along with support of other Friends that helped her maintain this ministry, until she wasn’t able to continue.</p>
+<p>I don’t personally know the story of how she was led to lay down this ministry – others will need to fill in this piece. While I participated in the 80’s I learned so much about the wider world of Quakers as all worships and gathering were led by Friends representing the various branches ofQuakerism. It was a spiritually enriching experience while we educated ourselves and sought avenues to open up dialogue among Friends about how to prevent and stop this behavior.</p>
+<p>My personal story is that my Quaker grandparents (biological grandfather and step-grandmother) were emotionally abusive to my Father over the years of his growing up when they did not allow him to have contact with his biological Mother’s family, nor did they ever speak of his mother and the family who lived in the same town. There were other ways he experienced emotional abuse which he was reluctant to talk about. He carried this experience with him his entire life without any resolution that I know about. I have prayed that he found peace in his heart before his death, or afterwards.</p>
+<p>Professionally I worked on behalf of families in many different settings over the years as I had to earn a living and support my family which grew after my second marriage. The knowledge I had from my own family experiences, Friends Family Service, and the guidance of the Spirit was applied wherever there was an opportunity.</p>
+<p>So I often say I do not have illusions that we Friends are “perfect”. We are influenced by the culture at large more than we want to acknowledge. I do believe that together, in corporate worship, and through our Faith that God lives in each of us and speaks to us, that we can follow God’s lead instead of the culture.</p>
+<p>Ten years ago Windy Cooler was led to ministry among Friends on this same topic after her own experiences with domestic abuse in her marriage and family and her Quaker meeting’s response. I have supported Windy in this ministry. Although we may be farther along in our readiness to accept this reality among Friends than we were in the 80’s, there is still major resistance and push back from Friends. This is Windy’s story to tell now, adding to Judy’s story.</p>
+<p>When and how are Friends going to embrace this reality and take action to alleviate the suffering and pain that exists in the Religious Society of Friends? How many more years/decades will we turn away from this while we seek justice and peace elsewhere in the world?</p>
+</blockquote>
+<p>Photo of Judy Brutz by Windy Cooler, from an interview in 2019.</p>
+
+                    </main>
+
+                    </nav>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            //const wsAddress = wsProtocol + "//" + location.host + "/" + "";
+            const wsAddress = wsProtocol + "//" + location.host + "/__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function () {
+                socket.close();
+            }
+        </script>
+
+
+
+
+
+
+        <script src="/theme/clipboard.min.js"></script>
+        <script src="/theme/highlight.js"></script>
+        <script src="/theme/book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+</body>
+
+</html>
